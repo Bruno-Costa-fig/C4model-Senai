@@ -1,0 +1,22 @@
+@startuml AtividadeContainer
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml
+
+LAYOUT_WITH_LEGEND()
+
+title Diagrama de Container — Sistema de Controle de Presença
+
+Person(professor, "Professor", "Registra a presença dos alunos")
+Person(coordenador, "Coordenador", "Consulta os registros")
+
+System_Boundary(sistema, "Sistema de Controle de Presença") {
+    Container(frontend, "App Web", "HTML / JavaScript", "Interface para registro\ne consulta de presenças")
+    Container(api, "API REST", "Node.js / C#", "Processa regras de negócio\ne valida os dados")
+    ContainerDb(banco, "Banco de Dados", "PostgreSQL / SQL Server", "Armazena registros de presença,\nturmas e alunos")
+}
+
+Rel(professor, frontend, "Acessa via", "HTTPS")
+Rel(coordenador, frontend, "Acessa via", "HTTPS")
+Rel(frontend, api, "Envia requisições", "JSON / HTTPS")
+Rel(api, banco, "Lê e grava dados", "SQL")
+
+@enduml

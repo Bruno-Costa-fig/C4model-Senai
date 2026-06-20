@@ -1,0 +1,13 @@
+@startuml BibliotecaCode
+!includeurl https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Code.puml
+
+Container(api, "API Backend", ".Net 9", "API Rest para funcionalidades do Backend"){
+    Component(controller, "Controlador REST", "Controlador MVC", "Recebe Requisições HTTP")
+    Component(service, "Serviço", "Classe de Serviço", "Contém lógica de negócio")
+    Component(repository, "Repositório", "Interface", "Gerencia operações de banco de dados")
+}
+
+Rel(controller, service, "Chamada de métodos")
+Rel(service, repository, "Consulta ao DB")
+
+@enduml

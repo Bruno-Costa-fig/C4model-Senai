@@ -1,0 +1,16 @@
+@startuml AtividadeContext
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Context.puml
+
+LAYOUT_WITH_LEGEND()
+
+title Diagrama de Contexto — Sistema de Controle de Presença
+
+Person(professor, "Professor", "Registra a presença\ndos alunos por turma e aula")
+Person(coordenador, "Coordenador", "Consulta os registros\nde presença")
+
+System(sistema, "Sistema de Controle de Presença", "Permite o registro e consulta\nda presença de alunos")
+
+Rel(professor, sistema, "Registra presença", "HTTPS")
+Rel(coordenador, sistema, "Consulta registros", "HTTPS")
+
+@enduml
