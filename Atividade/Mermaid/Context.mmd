@@ -1,0 +1,10 @@
+C4Context
+  title Diagrama de Contexto — Sistema de Controle de Presença
+
+  Person(professor, "Professor", "Registra a presença dos alunos por turma e aula")
+  Person(coordenador, "Coordenador", "Consulta os registros de presença")
+
+  System(sistema, "Sistema de Controle de Presença", "Permite o registro e consulta da presença de alunos")
+
+  Rel(professor, sistema, "Registra presença", "HTTPS")
+  Rel(coordenador, sistema, "Consulta registros", "HTTPS")

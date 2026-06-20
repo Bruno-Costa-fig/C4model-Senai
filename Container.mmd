@@ -1,0 +1,21 @@
+C4Container
+    title Sistema de Gestão de Biblioteca
+
+    Person(usuario, "Usuário", "Usuário que interage com o sistema")
+
+    System_Boundary(sistema, "Sistema de Gestão de Biblioteca") {
+
+        Container(webapp, "Aplicação Web", "React", "Front-end da aplicação web")
+        Container(mobileapp, "Aplicação Mobile", "React Native", "Front-end da aplicação mobile")
+        Container(api, "API Backend", ".NET 9", "API REST")
+        ContainerDb(database, "Banco de Dados", "PostgreSQL", "Banco de dados")
+
+    }
+
+    Rel(usuario, webapp, "Usa")
+    Rel(usuario, mobileapp, "Usa")
+
+    Rel(webapp, api, "HTTPS")
+    Rel(mobileapp, api, "HTTPS")
+
+    Rel(api, database, "SQL")

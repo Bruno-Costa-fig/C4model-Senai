@@ -1,0 +1,14 @@
+flowchart LR
+
+subgraph API["API Backend (.NET 9)"]
+
+Controller["Controlador REST<br/>Controlador MVC<br/><br/>Recebe requisições HTTP"]
+
+Service["Serviço<br/>Classe de Serviço<br/><br/>Lógica de negócio"]
+
+Repository["Repositório<br/>Interface<br/><br/>Operações de banco de dados"]
+
+end
+
+Controller -->|Chamada de métodos| Service
+Service -->|Consulta ao DB| Repository

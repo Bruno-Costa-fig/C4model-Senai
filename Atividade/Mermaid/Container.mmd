@@ -1,0 +1,16 @@
+C4Container
+  title Diagrama de Container — Sistema de Controle de Presença
+
+  Person(professor, "Professor", "Registra a presença dos alunos")
+  Person(coordenador, "Coordenador", "Consulta os registros")
+
+  System_Boundary(sistema, "Sistema de Controle de Presença") {
+    Container(frontend, "App Web", "HTML / JavaScript", "Interface para registro e consulta de presenças")
+    Container(api, "API REST", "Node.js / C#", "Processa regras de negócio e valida os dados")
+    ContainerDb(banco, "Banco de Dados", "PostgreSQL / SQL Server", "Armazena registros de presença, turmas e alunos")
+  }
+
+  Rel(professor, frontend, "Acessa via", "HTTPS")
+  Rel(coordenador, frontend, "Acessa via", "HTTPS")
+  Rel(frontend, api, "Envia requisições", "JSON / HTTPS")
+  Rel(api, banco, "Lê e grava dados", "SQL")
